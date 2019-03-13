@@ -1,42 +1,41 @@
-var css1 = `/* 亲爱的面试官您好，
- * 我叫张含雨，
- * 我是一名前端工程狮,
- * 这是一个会动的简历～～
- * 首先我们要在页面上加上一些过渡～
- */
- * {
-    transition: all 0.5s;
- }
-/* 然后把背景颜色改变一下，并且将字体变大～
- */
- html {
-    background: rgb(222,222,222);
-    font-size: 14px;
- }
-  #coder {
-    position: fixed;
-    left: 10px;
-    top: 10px;
-    width: 45%;
-    animation: breath 0.5s infinite alternate-reverse;
- }
- /* 给代码加一点高亮～
- */
- .token.comment{color: slategray;}
- .token.selector{color: #5096D7;}
- .token.property{color: #905;}
- .token.function{color: #DD4A68;}
- #coder { padding:15px;}
- /* 边框去掉～来点阴影～
- */
- #coder{border: none; box-shadow: -1px 1px 7px 3px rgba(0,0,0,0.29);
+var css1 = `
+  /* 亲爱的面试官您好，
+  * 我叫张含雨，
+  * 我是一名前端工程狮,
+  * 这是一个会动的简历～～
+  * 首先我们要在页面上加上一些过渡～
+  */
+  * {
+      transition: all 0.5s;
+  }
+  /* 然后把背景颜色改变一下，并且将字体变大～
+  */
+    html {
+      background: rgb(222,222,222);
+      font-size: 16px;
+  }
+    #coder {
+      position: fixed;
+      left: 30px;
+      top: 10px;
+      width: 45%;
+      animation: breath 0.5s infinite alternate-reverse;
+  }
+  /* 给代码加一点高亮～
+  */
+  .token.comment{color: slategray;}
+  .token.selector{color: #5096D7;}
+  .token.property{color: #905;}
+  .token.function{color: #DD4A68;}
+   #coder { padding:15px;}
+  /* 边框去掉～来点阴影～
+  */
+   #coder{border: none; box-shadow: -1px 1px 7px 3px rgba(0,0,0,0.29);
  `;
 
 let domPaper = `
 /* 👉右边来张纸吧～要开始写简历啦～
  */
- #paper {background: white;}
-}
  `;
 
 function writeCode(prefix,code,fn) {
@@ -51,7 +50,7 @@ function writeCode(prefix,code,fn) {
             window.clearInterval(id);
             fn && fn.call()
         }
-    }, 10);
+    }, 20);
 }
 function writeMarkdown(markdown, fn){
     let domPaper = document.querySelector('#paper>.content')
@@ -64,7 +63,7 @@ function writeMarkdown(markdown, fn){
         window.clearInterval(id)
         fn && fn.call()
       }
-    }, 10)
+    }, 20)
   }
 
 writeCode('', css1, ()=>{ // writeCss call the function
@@ -92,7 +91,6 @@ function createPaper(fn) {
     fn && fn.call()
 }//创建一个paper
 
-
 function convertMarkdownToHtml(fn){
     var div = document.createElement('div')  
     div.className = 'html markdown-body'
@@ -106,9 +104,9 @@ function convertMarkdownToHtml(fn){
 var md = `
 # 自我介绍
 
-我叫张含雨
-2018届毕业生
-毕业于郑州航空工业管理学院：视觉传达专业(全日制本科)
+- 我叫张含雨
+- 2018届毕业生
+- 毕业于郑州航空工业管理学院：视觉传达专业(全日制本科)
 
 自学前端半年
 - 在学校四年班长，责任心强～
@@ -124,20 +122,21 @@ var md = `
 
 # 项目介绍
 
-1. 苹果风格轮播
-2. XXX 简历
-3. XXX 画板
+1. [苹果风格轮播](https://949nb.github.io/appleStyleSlide/appleSlide.html)
+2. [iNav-一个自制的导航主页](https://949nb.github.io/newNavPage/navPage.html)
+3. [自制画板](https://949nb.github.io/Canvas/canvas.html)
+4. [简书博客](https://www.jianshu.com/u/a8fc692ca1c6)
+5. [GitHub](https://github.com/949nb)
 
 # 联系方式
 
-- QQ xxxxxxxx
-- Email xxxxxxxx
-- 手机 xxxxxxx
+- 微信/手机：17542116538
+- Email 1661346771@qq.com
 `
 
 let css3 = `
 /*
  * 这就是我的会动的简历
- * 谢谢观看
+ * 谢谢观看:)
  */
 `
