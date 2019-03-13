@@ -21,12 +21,18 @@
     overflow: hidden;
 }
 #paper {
-    border: 5px solid red;
     position: fixed;
     right: 5px;
     width: 45%;
     height: 95vh;
     background: white;
     padding: 10px;
-    margin-right: 10px;
+    margin-right: 30px;
+    margin-top: 10px;
+    border: none; box-shadow: -1px 1px 7px 3px rgba(0,0,0,0.29);
+    overflow: auto;
 }
+.markdown-body{
+    padding-top: 20px;
+    padding-left: 10px;
+  }
