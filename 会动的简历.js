@@ -11,7 +11,7 @@ var code = `/* 亲爱的面试官您好，
  */
  html {
     background: rgb(222,222,222);
-    font-size: 14px;
+    font-size: 16px;
  }
   #coder {
     position: fixed;
@@ -36,49 +36,37 @@ var code = `/* 亲爱的面试官您好，
 let domPaper = `
 /* 👉右边来张纸吧～要开始写简历啦～
  */
- #paper {background: white;}
-}
- `;
+ #paper {
+    border: 5px solid red;
+    position: fixed;
+}`;
 
-function writeCode(code) {
+function writeCode(prefix,code,fn) {
+    let domCoder = document.querySelector('#coder');
     let n = 0;
     let id = setInterval(() => {
         n += 1;
-        let domCoder = document.querySelector('#coder');
-        domCoder.innerHTML = Prism.highlight(code.substring(0, n), Prism.languages.css, 'css');
-        styleTag.innerHTML = code.substring(0, n);
+        domCoder.innerHTML = Prism.highlight(prefix + code.substring(0, n), Prism.languages.css, 'css');
+        styleTag.innerHTML = prefix + code.substring(0, n);
         domCoder.scrollTop = domCoder.scrollHeight;
         if (n >= code.length) {
             window.clearInterval(id);
-            fn2();
-            fn3(styleTag.innerHTML);
+            fn && fn.call()
         }
     }, 0);
 }
 
-writeCode(code,fn2);
+writeCode('',code,()=>{
+    createPaper(()=>{
+        writeCode(code,domPaper,()=>{})
+    })
+})
 
 
-function fn2() {
+function createPaper(fn) {
     let paper = document.createElement('div');
     paper.id = 'paper';
     document.body.appendChild(paper)
     console.log('创建paper完成')
+    fn && fn.call()
 }//创建一个paper
-
-function fn3(preceded) {
-    let index = 0;
-    let id2 = setInterval(() => {
-        console.log('开始添加paper样式');
-        index += 1;
-        coder.innerHTML = preceded + domPaper.substring(0, index);
-        coder.innerHTML =
-            Prism.highlight(coder.innerHTML, Prism.languages.css, 'css');
-        styleTag.innerHTML = preceded + domPaper.substring(0, index);
-        coder.scrollTop = coder.scrollHeight;
-        if (index >= domPaper.length) {
-            window.clearInterval(id2);
-            console.log('杂碎闹钟2');
-        }
-    }, 0);
-}
